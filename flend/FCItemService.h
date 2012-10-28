@@ -14,4 +14,6 @@
 
 @property (nonatomic, weak) id <FCItemServiceDelegate> delegate;
 
+- (void)getItems;
+
 @end

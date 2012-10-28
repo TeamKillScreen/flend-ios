@@ -10,4 +10,6 @@
 
 @protocol FCItemServiceDelegate <NSObject>
 
+- (void)didGetItems:(NSArray *)item;
+
 @end

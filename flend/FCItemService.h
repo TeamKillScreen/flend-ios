@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 
 #import "FCItemServiceDelegate.h"
+#import "FCItem.h"
 
 @interface FCItemService : NSObject
 
 @property (nonatomic, weak) id <FCItemServiceDelegate> delegate;
 
 - (void)getItems;
+
+- (void)addItem:(FCItem *)item;
 
 @end

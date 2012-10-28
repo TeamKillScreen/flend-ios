@@ -14,4 +14,7 @@
 
 - (FCItemViewController *)initWithItem:(FCItem *)item;
 
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
+
 @end

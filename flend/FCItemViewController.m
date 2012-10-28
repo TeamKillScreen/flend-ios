@@ -7,6 +7,7 @@
 //
 
 #import "FCItemViewController.h"
+#import "FCItemService.h"
 
 @interface FCItemViewController ()
 
@@ -17,6 +18,8 @@
 @implementation FCItemViewController
 
 @synthesize item = _item;
+@synthesize titleTextField = _titleTextField;
+@synthesize descriptionTextField = _descriptionTextField;
 
 // Designated initializer.
 - (FCItemViewController *)initWithItem:(FCItem *)item
@@ -50,6 +53,15 @@
 
 - (void)done
 {
+    FCItemService *service = [[FCItemService alloc] init];
+    FCItem *item = [[FCItem alloc] init];
+    
+    item.title = self.titleTextField.text;
+    item.description = self.descriptionTextField.text;
+    item.postcode = @"OL12 9NU";
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [service addItem:item];
 }
 
 @end

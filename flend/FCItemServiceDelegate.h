@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "FCItem.h"
+
 @protocol FCItemServiceDelegate <NSObject>
 
+- (void)didAddItem:(FCItem *)item;
 - (void)didGetItems:(NSArray *)items;
 - (void)didFailToGetItems:(NSString* )message;
 

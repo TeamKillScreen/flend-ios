@@ -19,6 +19,8 @@
 		E815D062163D3421009CDFCA /* FCItemService.m in Sources */ = {isa = PBXBuildFile; fileRef = E815D061163D3421009CDFCA /* FCItemService.m */; };
 		E815D066163D4BF3009CDFCA /* FCItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E815D065163D4BF3009CDFCA /* FCItemViewController.m */; };
 		E815D068163D4C0A009CDFCA /* FCItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E815D067163D4C0A009CDFCA /* FCItemViewController.xib */; };
+		E815D06C163D5ECD009CDFCA /* FCItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E815D06B163D5ECD009CDFCA /* FCItemTableViewController.m */; };
+		E815D06E163D5EE7009CDFCA /* FCItemTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E815D06D163D5EE7009CDFCA /* FCItemTableViewController.xib */; };
 		E8E75C43163CD21A001815C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E75C42163CD21A001815C9 /* UIKit.framework */; };
 		E8E75C45163CD21A001815C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E75C44163CD21A001815C9 /* Foundation.framework */; };
 		E8E75C47163CD21A001815C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E75C46163CD21A001815C9 /* CoreGraphics.framework */; };
@@ -49,6 +51,9 @@
 		E815D064163D4BF3009CDFCA /* FCItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCItemViewController.h; sourceTree = "<group>"; };
 		E815D065163D4BF3009CDFCA /* FCItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCItemViewController.m; sourceTree = "<group>"; };
 		E815D067163D4C0A009CDFCA /* FCItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FCItemViewController.xib; sourceTree = "<group>"; };
+		E815D06A163D5ECD009CDFCA /* FCItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCItemTableViewController.h; sourceTree = "<group>"; };
+		E815D06B163D5ECD009CDFCA /* FCItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCItemTableViewController.m; sourceTree = "<group>"; };
+		E815D06D163D5EE7009CDFCA /* FCItemTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FCItemTableViewController.xib; sourceTree = "<group>"; };
 		E8E75C3E163CD21A001815C9 /* flend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E75C42163CD21A001815C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E8E75C44163CD21A001815C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -147,6 +152,9 @@
 		E815D069163D5E6E009CDFCA /* ItemTableViews */ = {
 			isa = PBXGroup;
 			children = (
+				E815D06A163D5ECD009CDFCA /* FCItemTableViewController.h */,
+				E815D06B163D5ECD009CDFCA /* FCItemTableViewController.m */,
+				E815D06D163D5EE7009CDFCA /* FCItemTableViewController.xib */,
 			);
 			name = ItemTableViews;
 			sourceTree = "<group>";
@@ -268,6 +276,7 @@
 				E815D059163D2A45009CDFCA /* 259-list.png in Resources */,
 				E815D05A163D2A45009CDFCA /* 259-list@2x.png in Resources */,
 				E815D068163D4C0A009CDFCA /* FCItemViewController.xib in Resources */,
+				E815D06E163D5EE7009CDFCA /* FCItemTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +294,7 @@
 				E815D04B163D19E1009CDFCA /* FCItem.m in Sources */,
 				E815D062163D3421009CDFCA /* FCItemService.m in Sources */,
 				E815D066163D4BF3009CDFCA /* FCItemViewController.m in Sources */,
+				E815D06C163D5ECD009CDFCA /* FCItemTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

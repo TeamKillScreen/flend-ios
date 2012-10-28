@@ -13,6 +13,7 @@
 #import "FCItemAnnotation.h"
 
 #import "FCItemViewController.h"
+#import "FCItemTableViewController.h"
 
 #import "FCItemService.h"
 
@@ -20,6 +21,7 @@
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) NSArray *items;
 
 - (void)showList;
 - (void)refreshList;
@@ -122,7 +124,7 @@
 
 - (void)showList
 {
-    UIViewController *tableViewController = [[UIViewController alloc] init];
+    FCItemTableViewController *tableViewController = [[FCItemTableViewController alloc] initWithItems:self.items];
     
     [self.navigationController pushViewController:tableViewController animated:YES];
 }
@@ -147,7 +149,9 @@
 
 - (void)didGetItems:(NSArray *)items
 {
-    for (NSDictionary *each in items) {
+    self.items = items;
+    
+    for (NSDictionary *each in self.items) {
         FCItem *item = (FCItem *)each;
         FCItemAnnotation *annotation = [[FCItemAnnotation alloc] initWithItem:item];
     
@@ -158,6 +162,11 @@
 - (void)didFailToGetItems:(NSString *)message
 {
     NSLog(@"didFailToGetItems: %@", message);
+}
+
+- (void)didAddItem:(FCItem *)item
+{
+    NSLog(@"didAddItems: %@", item.title);
 }
 
 @end

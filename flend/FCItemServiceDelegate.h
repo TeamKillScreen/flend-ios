@@ -10,7 +10,7 @@
 
 @protocol FCItemServiceDelegate <NSObject>
 
-- (void)didGetItems:(NSArray *)item;
+- (void)didGetItems:(NSArray *)items;
 - (void)didFailToGetItems:(NSString* )message;
 
 @end

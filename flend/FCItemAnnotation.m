@@ -30,4 +30,27 @@
     return self;
 }
 
+- (NSString *)title
+{
+    return self.item.title;
+}
+
+- (NSString *)subtitle
+{
+    NSString *subtitle;
+    
+    if (self.item.postcode ) {
+        subtitle = [NSString stringWithFormat:@"%@ (%@)", self.item.description, self.item.postcode];
+    } else {
+        subtitle = self.item.description;
+    }
+    
+    return subtitle;
+}
+
+- (CLLocationCoordinate2D)coordinate
+{
+    return self.item.coordinate;
+}
+
 @end

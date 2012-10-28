@@ -16,9 +16,9 @@
 		E815D04F163D1E14009CDFCA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E815D04E163D1E14009CDFCA /* MapKit.framework */; };
 		E815D059163D2A45009CDFCA /* 259-list.png in Resources */ = {isa = PBXBuildFile; fileRef = E815D057163D2A45009CDFCA /* 259-list.png */; };
 		E815D05A163D2A45009CDFCA /* 259-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E815D058163D2A45009CDFCA /* 259-list@2x.png */; };
-		E815D05D163D31F0009CDFCA /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E815D05B163D31F0009CDFCA /* 01-refresh.png */; };
-		E815D05E163D31F0009CDFCA /* 01-refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E815D05C163D31F0009CDFCA /* 01-refresh@2x.png */; };
 		E815D062163D3421009CDFCA /* FCItemService.m in Sources */ = {isa = PBXBuildFile; fileRef = E815D061163D3421009CDFCA /* FCItemService.m */; };
+		E815D066163D4BF3009CDFCA /* FCItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E815D065163D4BF3009CDFCA /* FCItemViewController.m */; };
+		E815D068163D4C0A009CDFCA /* FCItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E815D067163D4C0A009CDFCA /* FCItemViewController.xib */; };
 		E8E75C43163CD21A001815C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E75C42163CD21A001815C9 /* UIKit.framework */; };
 		E8E75C45163CD21A001815C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E75C44163CD21A001815C9 /* Foundation.framework */; };
 		E8E75C47163CD21A001815C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E75C46163CD21A001815C9 /* CoreGraphics.framework */; };
@@ -44,10 +44,11 @@
 		E815D04E163D1E14009CDFCA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E815D057163D2A45009CDFCA /* 259-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "259-list.png"; sourceTree = "<group>"; };
 		E815D058163D2A45009CDFCA /* 259-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "259-list@2x.png"; sourceTree = "<group>"; };
-		E815D05B163D31F0009CDFCA /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
-		E815D05C163D31F0009CDFCA /* 01-refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh@2x.png"; sourceTree = "<group>"; };
 		E815D060163D3421009CDFCA /* FCItemService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCItemService.h; sourceTree = "<group>"; };
 		E815D061163D3421009CDFCA /* FCItemService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCItemService.m; sourceTree = "<group>"; };
+		E815D064163D4BF3009CDFCA /* FCItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCItemViewController.h; sourceTree = "<group>"; };
+		E815D065163D4BF3009CDFCA /* FCItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCItemViewController.m; sourceTree = "<group>"; };
+		E815D067163D4C0A009CDFCA /* FCItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FCItemViewController.xib; sourceTree = "<group>"; };
 		E8E75C3E163CD21A001815C9 /* flend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E75C42163CD21A001815C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E8E75C44163CD21A001815C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -84,8 +85,6 @@
 			children = (
 				E8E75C54163CD21A001815C9 /* Default.png */,
 				E8E75C56163CD21A001815C9 /* Default@2x.png */,
-				E815D05B163D31F0009CDFCA /* 01-refresh.png */,
-				E815D05C163D31F0009CDFCA /* 01-refresh@2x.png */,
 				E815D057163D2A45009CDFCA /* 259-list.png */,
 				E815D058163D2A45009CDFCA /* 259-list@2x.png */,
 				E8E75C58163CD21A001815C9 /* Default-568h@2x.png */,
@@ -105,7 +104,7 @@
 			name = App;
 			sourceTree = "<group>";
 		};
-		E815D051163D2611009CDFCA /* MapView */ = {
+		E815D051163D2611009CDFCA /* MapViews */ = {
 			isa = PBXGroup;
 			children = (
 				E815D033163D154D009CDFCA /* FCMapViewController.h */,
@@ -113,26 +112,43 @@
 				E815D046163D19C2009CDFCA /* FCItemAnnotation.h */,
 				E815D047163D19C2009CDFCA /* FCItemAnnotation.m */,
 			);
-			name = MapView;
+			name = MapViews;
 			sourceTree = "<group>";
 		};
-		E815D052163D2621009CDFCA /* Service */ = {
+		E815D052163D2621009CDFCA /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				E815D060163D3421009CDFCA /* FCItemService.h */,
 				E815D061163D3421009CDFCA /* FCItemService.m */,
 				E815D045163D194D009CDFCA /* FCItemServiceDelegate.h */,
 			);
-			name = Service;
+			name = Services;
 			sourceTree = "<group>";
 		};
-		E815D05F163D33F2009CDFCA /* Model */ = {
+		E815D05F163D33F2009CDFCA /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				E815D049163D19E1009CDFCA /* FCItem.h */,
 				E815D04A163D19E1009CDFCA /* FCItem.m */,
 			);
-			name = Model;
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E815D063163D4BA1009CDFCA /* ItemViews */ = {
+			isa = PBXGroup;
+			children = (
+				E815D064163D4BF3009CDFCA /* FCItemViewController.h */,
+				E815D065163D4BF3009CDFCA /* FCItemViewController.m */,
+				E815D067163D4C0A009CDFCA /* FCItemViewController.xib */,
+			);
+			name = ItemViews;
+			sourceTree = "<group>";
+		};
+		E815D069163D5E6E009CDFCA /* ItemTableViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ItemTableViews;
 			sourceTree = "<group>";
 		};
 		E8E75C33163CD21A001815C9 = {
@@ -169,10 +185,12 @@
 		E8E75C48163CD21A001815C9 /* flend */ = {
 			isa = PBXGroup;
 			children = (
+				E815D069163D5E6E009CDFCA /* ItemTableViews */,
+				E815D063163D4BA1009CDFCA /* ItemViews */,
 				E815D050163D25FD009CDFCA /* App */,
-				E815D051163D2611009CDFCA /* MapView */,
-				E815D05F163D33F2009CDFCA /* Model */,
-				E815D052163D2621009CDFCA /* Service */,
+				E815D051163D2611009CDFCA /* MapViews */,
+				E815D05F163D33F2009CDFCA /* Models */,
+				E815D052163D2621009CDFCA /* Services */,
 			);
 			path = flend;
 			sourceTree = "<group>";
@@ -249,8 +267,7 @@
 				E815D043163D172C009CDFCA /* 07-map-marker@2x.png in Resources */,
 				E815D059163D2A45009CDFCA /* 259-list.png in Resources */,
 				E815D05A163D2A45009CDFCA /* 259-list@2x.png in Resources */,
-				E815D05D163D31F0009CDFCA /* 01-refresh.png in Resources */,
-				E815D05E163D31F0009CDFCA /* 01-refresh@2x.png in Resources */,
+				E815D068163D4C0A009CDFCA /* FCItemViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +284,7 @@
 				E815D048163D19C2009CDFCA /* FCItemAnnotation.m in Sources */,
 				E815D04B163D19E1009CDFCA /* FCItem.m in Sources */,
 				E815D062163D3421009CDFCA /* FCItemService.m in Sources */,
+				E815D066163D4BF3009CDFCA /* FCItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

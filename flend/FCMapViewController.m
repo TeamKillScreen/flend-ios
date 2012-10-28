@@ -12,6 +12,8 @@
 #import "FCMapViewController.h"
 #import "FCItemAnnotation.h"
 
+#import "FCItemViewController.h"
+
 #import "FCItemService.h"
 
 @interface FCMapViewController () <CLLocationManagerDelegate, FCItemServiceDelegate>
@@ -61,19 +63,19 @@
     self.view = self.mapView;
     
     self.title = @"Map";
-    
-    // Set up map view controller navigation item.
-    // UIBarButtonItem *listBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showList)];
-    
+
     // List button.
     UIImage *listImage = [UIImage imageNamed:@"259-list.png"];
     UIBarButtonItem *listBarButtonItem = [[UIBarButtonItem alloc] initWithImage:listImage style:UIBarButtonItemStyleBordered target:self action:@selector(showList)];
 
     // Refresh button.
-    UIImage *refreshImage = [UIImage imageNamed:@"01-refresh.png"];
-    UIBarButtonItem *refreshBarButtonItem = [[UIBarButtonItem alloc] initWithImage:refreshImage style:UIBarButtonItemStylePlain target:self action:@selector(refreshList)];
+    /*
+    UIBarButtonItem *refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshList)];
+    */
 
-    self.navigationItem.leftBarButtonItem = refreshBarButtonItem;
+    UIBarButtonItem *addBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(addItem)];
+
+    self.navigationItem.leftBarButtonItem = addBarButtonItem;
     self.navigationItem.rightBarButtonItem = listBarButtonItem;
     
     self.view = self.mapView;
@@ -125,15 +127,32 @@
     [self.navigationController pushViewController:tableViewController animated:YES];
 }
 
+- (void)addItem
+{
+    FCItemViewController *itemViewController = [[FCItemViewController alloc] init];
+    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:itemViewController];
+    
+    navigationViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self.navigationController presentViewController:navigationViewController animated:YES completion:^{
+        // Do nothing on completion.
+    }];
+}
+
 - (void)refreshList
 {
 }
 
 #pragma mark - FCItemServiceDelegate impl
 
-- (void)didGetItems:(NSArray *)item
+- (void)didGetItems:(NSArray *)items
 {
-    NSLog(@"didGetItems");
+    for (NSDictionary *each in items) {
+        FCItem *item = (FCItem *)each;
+        FCItemAnnotation *annotation = [[FCItemAnnotation alloc] initWithItem:item];
+    
+        [self.mapView addAnnotation:annotation];
+    }
 }
 
 - (void)didFailToGetItems:(NSString *)message

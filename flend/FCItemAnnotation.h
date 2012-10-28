@@ -16,4 +16,9 @@
 
 - (FCItemAnnotation *)initWithItem:(FCItem *)item;
 
+- (NSString *)title;
+- (NSString *)subtitle;
+
+- (CLLocationCoordinate2D)coordinate;
+
 @end

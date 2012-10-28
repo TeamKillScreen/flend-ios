@@ -11,7 +11,8 @@
 
 #import "FCMapViewController.h"
 #import "FCItemAnnotation.h"
-#import "FCItemServiceDelegate.h"
+
+#import "FCItemService.h"
 
 @interface FCMapViewController () <CLLocationManagerDelegate, FCItemServiceDelegate>
 
@@ -37,6 +38,12 @@
     // Create and set up location manager.
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
+    
+    // Get items using external service.
+    FCItemService *service = [[FCItemService alloc] init];
+    
+    service.delegate = self;
+    [service getItems];
 }
 
 - (void)loadView
@@ -120,6 +127,18 @@
 
 - (void)refreshList
 {
+}
+
+#pragma mark - FCItemServiceDelegate impl
+
+- (void)didGetItems:(NSArray *)item
+{
+    NSLog(@"didGetItems");
+}
+
+- (void)didFailToGetItems:(NSString *)message
+{
+    NSLog(@"didFailToGetItems: %@", message);
 }
 
 @end

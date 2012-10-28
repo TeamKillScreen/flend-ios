@@ -11,11 +11,13 @@
 
 @interface FCItem : NSObject
 
-- (FCItem *)initWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString *)title subtitle:(NSString *)subtitle;
+@property CLLocationCoordinate2D coordinate;
 
-@property (readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, strong) NSString *itemId;
 
-@property (nonatomic, strong, readonly) NSString *title;
-@property (nonatomic, strong, readonly) NSString *subtitle;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *description;
+
+@property (nonatomic, strong) NSString *postcode;
 
 @end

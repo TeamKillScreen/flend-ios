@@ -6,7 +6,10 @@
 //  Copyright (c) 2012 Alan Gorton. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
+
 #import "FCItemService.h"
+#import "FCItem.h"
 
 #define BASE_URL @"http://flendapi.azurewebsites.net"
 
@@ -14,8 +17,8 @@
 
 @property (nonatomic, strong) NSURL *baseUrl;
 
-- (void)parseInvalidResponseData:(NSData *)responseData;
-- (NSArray *)parseItemsResponseData:(NSData *)responseData;
+- (void)handleInvalidResponseData:(NSData *)responseData httpStatusCode:(NSInteger)httpStatusCode;
+- (void)handleItemsResponseData:(NSData *)responseData;
 
 @end
 
@@ -45,13 +48,15 @@
     // Create request.
     NSString *urlString = [NSString stringWithFormat:@"%@/%@", self.baseUrl, @"items.json"];
     NSURL *url = [NSURL URLWithString:urlString];
+    
     NSMutableURLRequest *httpRequest = [[NSMutableURLRequest alloc] initWithURL:url];
     
     NSLog(@"urlString: %@", urlString);
     NSLog(@"url: %@", url.description);
     
     // Formulate request.
-    httpRequest.HTTPMethod = @"POST";
+    httpRequest.HTTPMethod = @"GET";
+    // [httpRequest setValue:@"application/json" forHTTPHeaderField:@"content-type"];
     httpRequest.timeoutInterval = 30; // seconds
     
     // Send request.
@@ -70,26 +75,70 @@
                 // Failed, likely a network error.
                 errorMessage = error.localizedDescription;
                 
-            } else if (httpResponse.statusCode == 200) {
-                NSArray *items = [self parseItemsResponseData:responseData];
+                NSLog(@"%@", errorMessage);
                 
-                [self.delegate didGetItems:items];
+            } else if (httpResponse.statusCode == 200) {
+                [self handleItemsResponseData:responseData];
+                
             } else {
-                [self parseInvalidResponseData:responseData];
+                NSLog(@"httpResponse.statusCode: %d.", httpResponse.statusCode);
+                [self handleInvalidResponseData:responseData httpStatusCode:httpResponse.statusCode];
+                
             }
         });
     });
 }
 
-#pragma mark - JSON response parsers
+#pragma mark - JSON response handlers
     
-- (NSArray *)parseItemsResponseData:(NSData *)responseData
+- (void)handleItemsResponseData:(NSData *)responseData
 {
-    return nil;
+    NSError *error;
+    
+    NSArray* json = [NSJSONSerialization
+                          JSONObjectWithData:responseData
+                          options:0
+                          error:&error];
+    
+    if (error) {
+        [self.delegate didFailToGetItems:error.localizedDescription];
+        return;
+    }
+    
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *each in json) {
+        FCItem *item = [[FCItem alloc] init];
+
+        item.itemId = [each objectForKey:@"id"];
+
+        item.title = [each objectForKey:@"title"];
+        item.description = [each objectForKey:@"description"];
+
+        item.postcode = [each objectForKey:@"postcode"];
+        
+        NSString *latString = [each objectForKey:@"lat"];
+        NSString *lngString = [each objectForKey:@"lng"];
+        
+        double lat = [latString doubleValue];
+        double lon = [lngString doubleValue];
+        
+        CLLocationCoordinate2D coordinate;
+        
+        coordinate.latitude = lat;
+        coordinate.longitude = lon;
+        
+        item.coordinate = coordinate;
+        
+        [items addObject:item];
+    }
+    
+    [self.delegate didGetItems:items];
 }
 
-- (void)parseInvalidResponseData:(NSData *)responseData
+- (void)handleInvalidResponseData:(NSData *)responseData httpStatusCode:(NSInteger)httpStatusCode
 {
+    NSLog(@"handleInvalidResponseData: %d.", httpStatusCode);
 }
 
 @end

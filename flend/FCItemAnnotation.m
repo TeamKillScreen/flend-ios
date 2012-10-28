@@ -30,19 +30,4 @@
     return self;
 }
 
-- (CLLocationCoordinate2D)coordinate
-{
-    return self.item.coordinate;
-}
-
-- (NSString *)title
-{
-    return self.item.title;
-}
-
-- (NSString *)subtitle
-{
-    return self.item.subtitle;
-}
-
 @end

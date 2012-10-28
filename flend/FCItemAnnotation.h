@@ -15,6 +15,5 @@
 @interface FCItemAnnotation : NSObject <MKAnnotation>
 
 - (FCItemAnnotation *)initWithItem:(FCItem *)item;
-- (CLLocationCoordinate2D) coordinate;
 
 @end

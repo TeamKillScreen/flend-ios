@@ -11,5 +11,6 @@
 @protocol FCItemServiceDelegate <NSObject>
 
 - (void)didGetItems:(NSArray *)item;
+- (void)didFailToGetItems:(NSString* )message;
 
 @end

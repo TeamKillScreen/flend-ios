@@ -15,22 +15,9 @@
 @implementation FCItem
 
 @synthesize coordinate = _coordinate;
+@synthesize itemId = _itemId;
 @synthesize title = _title;
-@synthesize subtitle = _subtitle;
-
-- (FCItem *)initWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString *)title subtitle:(NSString *)subtitle
-{
-    self = [super init];
-    
-    if (self) {
-        _coordinate.latitude = coordinate.latitude;
-        _coordinate.longitude = coordinate.longitude;
-        
-        _title = title;
-        _subtitle = subtitle;
-    }
-    
-    return self;
-}
+@synthesize description = _description;
+@synthesize postcode = _postcode;
 
 @end

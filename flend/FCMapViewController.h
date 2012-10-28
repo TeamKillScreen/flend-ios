@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FCMapViewController : UIViewController
+#import "FCItemServiceDelegate.h"
+
+@interface FCMapViewController : UIViewController <FCItemServiceDelegate>
 
 @end

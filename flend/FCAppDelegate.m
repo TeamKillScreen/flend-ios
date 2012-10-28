@@ -43,7 +43,25 @@
         // Create tab items;
         NSMutableArray *items = [[NSMutableArray alloc] init];
         
+        UIImage *image;
+        
+        UINavigationController *myItemsViewController = [[UINavigationController alloc] init];
+        UINavigationController *wishlistItemsViewController = [[UINavigationController alloc] init];
+        UINavigationController *settingsViewController = [[UINavigationController alloc] init];
+        
+        image = [UIImage imageNamed:@"145-persondot.png"];
+        myItemsViewController.tabBarItem.image = image;
+        
+        image = [UIImage imageNamed:@"124-bullhorn.png"];
+        wishlistItemsViewController.tabBarItem.image = image;
+
+        image = [UIImage imageNamed:@"19-gear.png"];
+        settingsViewController.tabBarItem.image = image;
+        
         [items addObject:self.mapNavigationController];
+        [items addObject:myItemsViewController];
+        [items addObject:wishlistItemsViewController];
+        [items addObject:settingsViewController];
         
         // Create tab bar controller.
         _tabBarController = [[UITabBarController alloc] init];
